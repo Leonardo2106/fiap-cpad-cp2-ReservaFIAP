@@ -1,18 +1,67 @@
-import { useRouter } from 'expo-router';
+import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Profile() {
     const router = useRouter();
     
+    const [userData, setUserData] = useState({
+        nome: 'Carregando...',
+        rm: '...',
+        iniciais: '--'
+    });
+
+    useEffect(() => {
+        const carregarDados = async () => {
+            try {
+                // Busca os mesmos dados salvos no cadastro
+                const userJson = await AsyncStorage.getItem('@reservafiap:user');
+                if (userJson) {
+                    const usuario = JSON.parse(userJson);
+                    
+                    // Pega a primeira letra do primeiro nome e a primeira do último nome
+                    const partesNome = usuario.nome.trim().split(' ');
+                    let iniciaisCalc = '';
+                    if (partesNome.length > 1) {
+                        iniciaisCalc = (partesNome[0][0] + partesNome[partesNome.length - 1][0]).toUpperCase();
+                    } else if (partesNome.length === 1 && partesNome[0] !== '') {
+                        iniciaisCalc = partesNome[0].substring(0, 2).toUpperCase();
+                    }
+
+                    setUserData({
+                        nome: usuario.nome,
+                        rm: usuario.rm,
+                        iniciais: iniciaisCalc
+                    });
+                }
+            } catch (error) {
+                console.error('Erro ao carregar os dados do perfil', error);
+            }
+        };
+
+        carregarDados();
+    }, []);
+    
+    const handleLogout = async () => {
+        try {
+            await AsyncStorage.removeItem('@reservafiap:session');
+
+            router.replace('/sign');
+        } catch (error) {
+            console.error('Erro ao tentar sair da conta:', error);
+        }
+    };
+
     return (
         <View style={styles.container}>
             {/* Cabeçalho do Perfil */}
             <View style={styles.header}>
                 <View style={styles.avatar}>
-                    <Text style={styles.avatarText}>FS</Text>
+                    <Text style={styles.avatarText}>{userData.iniciais}</Text>
                 </View>
-                <Text style={styles.userName}>Fulano da Silva</Text>
-                <Text style={styles.userRM}>RM 999999</Text>
+                <Text style={styles.userName}>{userData.nome}</Text>
+                <Text style={styles.userRM}>RM {userData.rm}</Text>
             </View>
 
             {/* Informações Acadêmicas */}
@@ -26,13 +75,12 @@ export default function Profile() {
             <View style={styles.reservationSection}>
                 <Text style={styles.reservationTitle}>Reserva atual:</Text>
                 <View style={styles.reservationCard}>
-                    {/* Aqui você pode renderizar os dados da reserva ativa futuramente */}
                     <Text style={{ color: 'gray', fontStyle: 'italic' }}>Nenhuma reserva ativa no momento</Text>
                 </View>
             </View>
 
             {/* Botão Opcional de Logout */}
-            <TouchableOpacity style={styles.logoutButton} onPress={() => router.push('/sign')}>
+            <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
                 <Text style={styles.logoutText}>Sair da conta</Text>
             </TouchableOpacity>
         </View>
@@ -103,7 +151,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         justifyContent: 'center',
         alignItems: 'center',
-        borderStyle: 'dashed', // Estilo opcional para quando está vazio
+        borderStyle: 'dashed', 
     },
     logoutButton: {
         marginBottom: 30,

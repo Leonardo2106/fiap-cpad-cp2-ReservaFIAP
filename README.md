@@ -76,14 +76,10 @@ Observação importante:
 
 ## 🖥️ Estado atual do produto
 
-Hoje o app funciona como um protótipo navegável com dados majoritariamente mockados. O cadastro já consegue registrar um usuário localmente, mas esse dado ainda não está integrado ao login nem sendo exibido dinâmicamente no perfil.
+Hoje o app funciona como um protótipo navegável com um fluxo de usuário validado localmente. O cadastro registra o usuário via `AsyncStorage`, o login valida de forma funcional essas credenciais, e o perfil consome e exibe esses dados de forma dinâmica e persistente.
 
 ## 📉 Próximos passos
 
-- implementar a tela e a lógica de login usando os dados salvos no `AsyncStorage`
-- carregar automaticamente o usuário persistido ao abrir o app
-- refletir os dados cadastrados na tela de perfil
-- persistir também dados de reservas criadas pelo usuário
 - criar fluxo de logout e limpeza controlada da sessão local
 - melhorar validações de formulário, mensagens de erro e segurança do armazenamento
 - substituir persistência local por backend/API quando o projeto avançar para uma versão mais completa
@@ -93,9 +89,8 @@ Hoje o app funciona como um protótipo navegável com dados majoritariamente moc
 <img width="250" src="ReservaFIAP/assets/screenshots/Screenshot_1774386570.png" alt="Tela inicial" />
 <img width="250" src="ReservaFIAP/assets/screenshots/Screenshot_1774474257.png" alt="Tela de reserva" />
 <img width="250" src="ReservaFIAP/assets/screenshots/Screenshot_1774479974.png" alt="Tela de perfil" />
-<img width="250" src="ReservaFIAP/assets/screenshots/Screenshot_1777405081.png" alt="Tela de perfil" />
-<img width="250" src="ReservaFIAP/assets/screenshots/Screenshot_1777405085.png" alt="Tela de perfil" />
-
+<img width="250" src="ReservaFIAP/assets/screenshots/Screenshot_1777405081.png" alt="Tela de entrada (sing)" />
+<img width="250" src="ReservaFIAP/assets/screenshots/Screenshot_1777405085.png" alt="Tela de cadastro" />
 
 ## 📦 Como executar
 
