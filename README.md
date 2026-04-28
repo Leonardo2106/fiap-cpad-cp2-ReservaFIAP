@@ -49,12 +49,12 @@ O ReservaFIAP foi pensado para que alunos possam organizar encontros acadêmicos
 
 Principais arquivos do app:
 
-- [ReservaFIAP/app/index.js](/home/armageddon/Documentos/FIAP/CheckPoints/2026/CPAD/cpad-cp01/ReservaFIAP/app/index.js): lista de salas reservadas e disponíveis
-- [ReservaFIAP/app/reservar.js](/home/armageddon/Documentos/FIAP/CheckPoints/2026/CPAD/cpad-cp01/ReservaFIAP/app/reservar.js): formulário de solicitação de reserva
-- [ReservaFIAP/app/cadastro.js](/home/armageddon/Documentos/FIAP/CheckPoints/2026/CPAD/cpad-cp01/ReservaFIAP/app/cadastro.js): cadastro de usuário com persistência local
-- [ReservaFIAP/app/sign.js](/home/armageddon/Documentos/FIAP/CheckPoints/2026/CPAD/cpad-cp01/ReservaFIAP/app/sign.js): tela de entrada com navegação para cadastro e login
-- [ReservaFIAP/app/profile.js](/home/armageddon/Documentos/FIAP/CheckPoints/2026/CPAD/cpad-cp01/ReservaFIAP/app/profile.js): perfil do usuário
-- [ReservaFIAP/app/_layout.js](/home/armageddon/Documentos/FIAP/CheckPoints/2026/CPAD/cpad-cp01/ReservaFIAP/app/_layout.js): configuração das tabs do aplicativo
+- [ReservaFIAP/app/index.js](ReservaFIAP/app/index.js): lista de salas reservadas e disponíveis
+- [ReservaFIAP/app/reservar.js](ReservaFIAP/app/reservar.js): formulário de solicitação de reserva
+- [ReservaFIAP/app/cadastro.js](ReservaFIAP/app/cadastro.js): cadastro de usuário com persistência local
+- [ReservaFIAP/app/sign.js](ReservaFIAP/app/sign.js): tela de entrada com navegação para cadastro e login
+- [ReservaFIAP/app/profile.js](ReservaFIAP/app/profile.js): perfil do usuário
+- [ReservaFIAP/app/_layout.js](ReservaFIAP/app/_layout.js): configuração das tabs do aplicativo
 
 ## 🎯 Mudanças recentes
 
